@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เข้าสู่ระบบ | Phukhieo Marketing</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- CSS สไตล์มินิมอลชมพู-ขาว -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- โหลด Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <style>
+    /* ล็อกหน้าจอให้อยู่ในหน้าเดียวพอดีจอ ไม่ให้มี Scrollbar เลื่อน */
+    html, body.login-body {
+      height: 100vh;
+      height: 100dvh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #fff9fb;
+    }
+    
+    .login-main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      flex: 1;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .login-card {
+      background: #ffffff;
+      padding: 30px 24px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(238, 130, 238, 0.12);
+      border: 1px solid #ffe6ee;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    
+    /* ลดขนาดโลโก้ลงให้พอดี และไร้กรอบ */
+    .login-logo-box {
+      width: 100%;
+      max-width: 140px;
+      height: auto;
+      margin: 0 auto 14px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      padding: 0;
+      overflow: hidden;
+    }
+    .login-logo-box img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .login-card h2 {
+      font-family: 'Kanit', sans-serif;
+      font-size: 22px;
+      color: #333;
+      margin-bottom: 6px;
+      margin-top: 0;
+    }
+    .login-card p {
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 16px;
+      line-height: 1.4;
+      font-family: 'Prompt', sans-serif;
+    }
+    
+    .domain-badge {
+      display: inline-block;
+      background: #fdf2f8;
+      color: #d81b60;
+      border: 1px solid #fbcfe8;
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 12px;
+      margin-bottom: 18px;
+      font-weight: 500;
+      font-family: 'Kanit', sans-serif;
+    }
+
+    .google-btn-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .error-msg {
+      color: #e11d48;
+      font-size: 13px;
+      margin-top: 10px;
+      display: none;
+      background: #ffe4e6;
+      padding: 8px;
+      border-radius: 10px;
+      font-family: 'Prompt', sans-serif;
+    }
+
+    /* ปรับขนาด Header และ Footer ให้กะทัดรัดไม่กินพื้นที่ */
+    .site-header {
+      padding: 12px 20px !important;
+    }
+    .site-footer {
+      padding: 12px 20px !important;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body class="login-body">
+
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">PK</span>
+      <span>PHUKHIEO<small>MARKETING</small></span>
+    </a>
+  </header>
+
+  <main class="login-main">
+    <div class="login-card">
+      <!-- โลโก้ขนาดเล็กลง ไม่มีกรอบ -->
+      <div class="login-logo-box">
+        <img src="pklogo.png" alt="Phukhieo Marketing Logo">
+      </div>
+      
+      <h2>Phukhieo Marketing</h2>
+      <p>ระบบตลาดนัดออนไลน์ภายในโรงเรียนภูเขียว<br>กรุณายืนยันตัวตนด้วย Google เพื่อเข้าใช้งาน</p>
+      
+      <div class="domain-badge">ใช้อีเมลโรงเรียน (@phukhieo.ac.th) เท่านั้น</div>
+
+      <!-- ปุ่ม Google Sign-In -->
+      <div class="google-btn-wrap">
+        <div id="g_id_onload"
+             data-client_id="609968099312-d10kt4cgrkq02rn667e9ol985aii54d0.apps.googleusercontent.com"
+             data-context="signin"
+             data-ux_mode="popup"
+             data-callback="handleCredentialResponse"
+             data-hd="phukhieo.ac.th"
+             data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin"
+             data-type="standard"
+             data-shape="pill"
+             data-theme="outline"
+             data-text="signin_with"
+             data-size="large"
+             data-logo_alignment="left">
+        </div>
+      </div>
+
+      <div id="login-error" class="error-msg"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="index.html">
+      <span class="brand-mark">PK</span>
+      <span>PHUKHIEO<small>MARKETING</small></span>
+    </a>
+    <div class="footer-right">
+      <small>Phukhieo School · Be kind to others</small>
+    </div>
+  </footer>
+
+  <script>
+    function decodeJwtResponse(token) {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+      return JSON.parse(jsonPayload);
+    }
+
+    window.handleCredentialResponse = function(response) {
+      const payload = decodeJwtResponse(response.credential);
+      const email = (payload.email || "").toLowerCase();
+      const errorBox = document.getElementById("login-error");
+
+      if (email.endsWith("@phukhieo.ac.th")) {
+        const userData = {
+          email: email,
+          name: payload.name,
+          picture: payload.picture,
+          loginTime: Date.now()
+        };
+        localStorage.setItem("pk_seller_auth", JSON.stringify(userData));
+
+        const redirectUrl = sessionStorage.getItem("pk_redirect_after_login") || "index.html";
+        sessionStorage.removeItem("pk_redirect_after_login");
+        window.location.href = redirectUrl;
+      } else {
+        errorBox.style.display = "block";
+        errorBox.textContent = `ขออภัย อีเมล (${email}) ไม่ได้รับอนุญาต กรุณาใช้อีเมล @phukhieo.ac.th`;
+        localStorage.removeItem("pk_seller_auth");
+      }
+    };
+  </script>
+</body>
+</html>

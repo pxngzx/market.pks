@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Zone | Phukhieo Marketing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- โหลด Google Identity Services สำหรับแอดมิน -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script type="module" src="js/app.js" defer></script>
+
+  <style>
+    .admin-login-card {
+      max-width: 420px;
+      margin: 40px auto;
+      text-align: center;
+      background: #ffffff;
+      padding: 40px 30px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(238, 130, 238, 0.15);
+      border: 1px solid #ffe6ee;
+    }
+    .admin-login-card h2 {
+      font-family: 'Kanit', sans-serif;
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    .admin-login-card p {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+    .admin-badge-box {
+      display: inline-block;
+      background: #fdf2f8;
+      color: #d81b60;
+      border: 1px solid #fbcfe8;
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 13px;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .google-btn-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .error-msg {
+      color: #e11d48;
+      font-size: 14px;
+      margin-top: 12px;
+      display: none;
+      background: #ffe4e6;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    /* สไตล์ป้ายข้อมูลผู้ขายในการ์ดสินค้าหน้าแอดมิน */
+    .product-card .seller-info-tag {
+      background: #fdf2f8;
+      border: 1.5px dashed #f472b6;
+      color: #be185d;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">PK</span>
+    <span>PHUKHIEO<small>MARKETING</small></span>
+  </a>
+  <button class="menu-toggle" aria-label="เปิดเมนู" aria-expanded="false">☰</button>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="search.html">Buy & Sell</a>
+    <a class="active" href="admin.html">Admin Zone</a>
+  </nav>
+</header>
+
+<main class="page-main">
+  <section class="page-heading">
+    <span class="eyebrow">MANAGE THE MARKETPLACE</span>
+    <h1>Admin <span>zone.</span></h1>
+    <p>ตรวจสอบและอนุมัติรายการสินค้าก่อนเผยแพร่</p>
+  </section>
+
+  <!-- ส่วนหน้าล็อกอินแอดมินด้วย Google -->
+  <section id="admin-login-panel" class="admin-login-card">
+    <h2>Admin Login</h2>
+    <p>เข้าสู่ระบบผู้ดูแลระบบด้วยอีเมลโรงเรียน</p>
+    <div class="admin-badge-box">เฉพาะอีเมลแอดมินที่ได้รับอนุญาต</div>
+
+    <div class="google-btn-wrap">
+      <div id="g_id_onload"
+           data-client_id="609968099312-d10kt4cgrkq02rn667e9ol985aii54d0.apps.googleusercontent.com"
+           data-context="signin"
+           data-ux_mode="popup"
+           data-callback="handleAdminLogin"
+           data-hd="phukhieo.ac.th"
+           data-auto_prompt="false">
+      </div>
+      <div class="g_id_signin"
+           data-type="standard"
+           data-shape="pill"
+           data-theme="outline"
+           data-text="signin_with"
+           data-size="large"
+           data-logo_alignment="left">
+      </div>
+    </div>
+
+    <div id="admin-login-error" class="error-msg"></div>
+  </section>
+
+  <!-- แผงควบคุมหลังบ้านของแอดมิน (ซ่อนไว้จนกว่าจะล็อกอินผ่าน) -->
+  <section id="admin-dashboard" class="hidden">
+    <div class="admin-toolbar">
+      <div>
+        <h2>รายการรออนุมัติ</h2>
+        <p class="form-hint">ตรวจสอบเนื้อหา ตัวตนผู้ขาย และรูปภาพก่อนอนุมัติ</p>
+      </div>
+      <button id="admin-logout" class="btn btn-outline" type="button">ออกจากระบบแอดมิน</button>
+    </div>
+    
+    <div id="pending-products" class="product-grid"></div>
+    
+    <div class="section-heading admin-approved-heading">
+      <div>
+        <span class="eyebrow">PUBLISHED</span>
+        <h2>สินค้าที่อนุมัติแล้ว</h2>
+      </div>
+    </div>
+    <div id="approved-products" class="product-grid"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <a class="brand footer-brand" href="index.html">
+    <span class="brand-mark">PK</span>
+    <span>PHUKHIEO<small>MARKETING</small></span>
+  </a>
+  <div>
+    <b>Contact</b>
+    <p>Instagram: <a href="https://www.instagram.com/pks.marketing/" target="_blank" rel="noopener">@pks.marketing</a></p>
+  </div>
+  <div class="footer-right">
+    <small>Phukhieo School · Be kind to others</small>
+  </div>
+</footer>
+
+<script>
+  // รายชื่ออีเมลแอดมินที่อนุญาตให้เข้าสู่ระบบ (จำกัดเฉพาะอีเมล 38340)
+  const ADMIN_EMAILS = [
+    "38340@phukhieo.ac.th"
+  ];
+
+  // ฟังก์ชันถอดรหัส JWT Token จาก Google
+  function decodeJwt(token) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+    return JSON.parse(jsonPayload);
+  }
+
+  // ตรวจสอบสถานะการล็อกอินแอดมินตั้งแต่เปิดหน้าเว็บ
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedAdmin = localStorage.getItem("pk_admin_auth");
+    if (savedAdmin) {
+      try {
+        const adminData = JSON.parse(savedAdmin);
+        if (adminData && ADMIN_EMAILS.includes(adminData.email.toLowerCase())) {
+          showAdminDashboard(adminData.name);
+        } else {
+          localStorage.removeItem("pk_admin_auth");
+        }
+      } catch (e) {
+        localStorage.removeItem("pk_admin_auth");
+      }
+    }
+
+    // ปุ่มออกจากระบบแอดมิน
+    const logoutBtn = document.getElementById("admin-logout");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("pk_admin_auth");
+        window.location.reload();
+      });
+    }
+  });
+
+  // ฟังก์ชันรับค่าเมื่อแอดมินยืนยันตัวตนด้วย Google สำเร็จ
+  window.handleAdminLogin = function(response) {
+    const payload = decodeJwt(response.credential);
+    const email = (payload.email || "").toLowerCase();
+    const errorBox = document.getElementById("admin-login-error");
+
+    // ตรวจสอบว่าเป็นอีเมล 38340@phukhieo.ac.th หรือไม่
+    if (ADMIN_EMAILS.includes(email)) {
+      const adminData = {
+        email: email,
+        name: payload.name,
+        time: Date.now()
+      };
+      localStorage.setItem("pk_admin_auth", JSON.stringify(adminData));
+      showAdminDashboard(payload.name);
+    } else {
+      errorBox.style.display = "block";
+      errorBox.textContent = `ขออภัย อีเมล (${email}) ไม่มีสิทธิ์เข้าถึงโซนผู้ดูแลระบบ`;
+    }
+  };
+
+  // ฟังก์ชันสลับหน้าจอแสดงแดชบอร์ดแอดมิน
+  function showAdminDashboard(adminName) {
+    document.getElementById("admin-login-panel").classList.add("hidden");
+    document.getElementById("admin-dashboard").classList.remove("hidden");
+    
+    const headingDesc = document.querySelector("#admin-dashboard .admin-toolbar p");
+    if (headingDesc) {
+      headingDesc.textContent = `ยินดีต้อนรับคุณแอดมิน ${adminName} — ตรวจสอบเนื้อหาและข้อมูลผู้ขายก่อนอนุมัติ`;
+    }
+  }
+</script>
+</body>
+</html>
