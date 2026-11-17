@@ -74,7 +74,7 @@ async function setupDetail() {
     <div class="detail-contact"><b>ช่องทางติดต่อผู้ขาย</b><p>${escapeHTML(product.contact)}</p><small>โปรดนัดรับและซื้อขายในพื้นที่ปลอดภัย</small></div></div>`;
 }
 
-// ระบบเพิ่มสินค้า (Seller) - ปรับปรุงให้แนบอีเมลผู้ขายไปด้วย
+// ระบบเพิ่มสินค้า (Seller)
 function setupSeller() {
   const form = $("#product-form");
   if (!form) return;
@@ -110,7 +110,6 @@ function setupSeller() {
       return;
     }
 
-    // ดึงข้อมูลผู้ขายที่ล็อกอินไว้จาก localStorage
     const rawAuth = localStorage.getItem("pk_seller_auth");
     let sellerEmail = "38340@phukhieo.ac.th";
     let sellerName = "ผู้ใช้งานระบบ";
@@ -164,7 +163,7 @@ function setupSeller() {
   });
 }
 
-// ระบบ Admin (อนุมัติ / ปฏิเสธ / ลบสินค้า) - รองรับหน้าแอดมิน Google Login
+// ระบบ Admin
 function setupAdmin() {
   const dashboard = $("#admin-dashboard"); 
   if (!dashboard) return;
@@ -230,7 +229,6 @@ function setupAdmin() {
     }
   };
 
-  // ตรวจสอบสถานะการล็อกอินแอดมินใน localStorage
   const savedAdmin = localStorage.getItem("pk_admin_auth");
   if (savedAdmin) {
     renderAdmin();
@@ -245,17 +243,56 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSeller(); 
   setupAdmin();
 
-  // อนิเมชันดอกไม้ร่วง 🌸
-  setInterval(() => {
-    const flower = document.createElement('div');
-    flower.classList.add('flower-petal');
-    flower.innerText = ['🌸', '🌺', '💮', '✨'][Math.floor(Math.random() * 4)];
-    flower.style.left = Math.random() * 100 + 'vw';
-    flower.style.animationDuration = Math.random() * 3 + 4 + 's';
-    flower.style.fontSize = Math.random() * 10 + 16 + 'px';
-    document.body.appendChild(flower);
-    setTimeout(() => flower.remove(), 7000);
-  }, 450);
+  // --- ระบบอิโมจิร่วง Whimsical (🍡✨💗🍰🍭) พร้อมปุ่มเปิด/ปิด ---
+  const whimsicalEmojis = ['🍡', '✨', '💗', '🍰', '🍭'];
+  let emojiInterval = null;
+  let isEmojiActive = localStorage.getItem("pk_emojis_enabled") !== "false";
+
+  const toggleContainer = document.createElement("div");
+  toggleContainer.id = "emoji-toggle-container";
+  toggleContainer.innerHTML = `
+    <span>✨ เอฟเฟกต์น่ารักๆ</span>
+    <button id="emoji-toggle-btn" type="button">${isEmojiActive ? "ปิดเอฟเฟกต์" : "เปิดเอฟเฟกต์"}</button>
+  `;
+  document.body.appendChild(toggleContainer);
+
+  const toggleBtn = document.getElementById("emoji-toggle-btn");
+
+  function startEmojis() {
+    if (emojiInterval) return;
+    emojiInterval = setInterval(() => {
+      const el = document.createElement('div');
+      el.classList.add('whimsical-petal');
+      el.innerText = whimsicalEmojis[Math.floor(Math.random() * whimsicalEmojis.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      el.style.fontSize = (Math.random() * 12 + 18) + 'px';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 7000);
+    }, 500);
+  }
+
+  function stopEmojis() {
+    clearInterval(emojiInterval);
+    emojiInterval = null;
+    document.querySelectorAll('.whimsical-petal').forEach(el => el.remove());
+  }
+
+  if (isEmojiActive) {
+    startEmojis();
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    isEmojiActive = !isEmojiActive;
+    localStorage.setItem("pk_emojis_enabled", isEmojiActive);
+    if (isEmojiActive) {
+      startEmojis();
+      toggleBtn.textContent = "ปิดเอฟเฟกต์";
+    } else {
+      stopEmojis();
+      toggleBtn.textContent = "เปิดเอฟเฟกต์";
+    }
+  });
 
   // ดาววิบวับประดับหน้าเว็บ ✦
   const mainContainers = document.querySelectorAll('.hero, .container, header, .card');
