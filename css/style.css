@@ -1,6 +1,6 @@
 :root {
-  --navy: #d9658d;
-  --blue: #ff85a2;
+  --navy: #d883a0;
+  --blue: #89cff0;
   --pink: #ffb7c5;
   --pale: #fff0f5;
   --ink: #5a4b51;
@@ -13,22 +13,22 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 
-/* --- พื้นหลังพาสเทลไหลวนนุ่มๆ + เส้นตารางสีขาว (Grid Background) --- */
+/* --- พื้นหลังพาสเทล (ชมพู เหลือง ฟ้า) + ลายตารางสีขาว + สีไหลวนนุ่มๆ --- */
 body, body.login-body {
   position: relative !important;
   margin: 0 !important;
   min-height: 100vh !important;
   
-  /* ผสมผสานระหว่างลายตารางสีขาว (Grid) กับกราเดียนต์พาสเทลไหลวน */
+  /* ลายตารางสีขาวจางๆ ผสมกับโทนสีพาสเทล ชมพู, เหลืองอ่อน, ฟ้าอ่อน */
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px),
-    linear-gradient(135deg, #EB9ab2, #efcfe3, #ecf2d8, #b3dee2) !important;
+    linear-gradient(rgba(255, 255, 255, 0.6) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.6) 1px, transparent 1px),
+    linear-gradient(135deg, #ffccd5, #fff3b0, #b9fbc0, #a0c4ff) !important;
   
   background-size: 30px 30px, 30px 30px, 400% 400% !important;
   background-position: 0 0, 0 0, 0% 50% !important;
   
-  animation: pastel-flow 15s ease infinite !important;
+  animation: pastel-flow 18s ease infinite !important;
   
   color: var(--ink) !important;
   font-family: 'Prompt', sans-serif !important;
@@ -43,9 +43,9 @@ body, body.login-body {
   100% { background-position: 0 0, 0 0, 0% 50%; }
 }
 
-/* --- ตัวหนังสือไล่สีชมพู-ม่วงพาสเทล สไตล์แคนดี้ น่ารักๆ --- */
+/* --- ตัวหนังสือไล่สีชมพู-เหลือง-ฟ้าพาสเทล สไตล์แคนดี้ น่ารักๆ --- */
 h1, h2, h3, .brand span:not(.brand-mark), .hero h1, .page-heading h1, .section-heading h2 {
-  background: linear-gradient(135deg, #ff6b95, #d946ef, #a855f7) !important;
+  background: linear-gradient(135deg, #ff70a6, #ff9770, #ffd670, #70d6ff) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
@@ -54,7 +54,7 @@ h1, h2, h3, .brand span:not(.brand-mark), .hero h1, .page-heading h1, .section-h
 
 a{color:inherit;text-decoration:none}
 button,input,textarea,select{font:inherit}
-.site-header{height:86px;padding:0 max(5vw,24px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #f0f1f4;background:rgba(255,255,255,0.9);position:sticky;top:0;z-index:20;backdrop-filter:blur(14px)}
+.site-header{height:86px;padding:0 max(5vw,24px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #f0f1f4;background:rgba(255,255,255,0.85);position:sticky;top:0;z-index:20;backdrop-filter:blur(14px)}
 .brand{display:flex;align-items:center;gap:11px;color:var(--navy);font:600 14px 'Kanit',sans-serif;letter-spacing:1.5px;line-height:1.1}
 .brand small{display:block;color:var(--blue);font:500 9px 'Prompt',sans-serif;letter-spacing:3px;margin-top:5px}
 .brand-mark{width:43px;height:43px;border-radius:14px;background:var(--navy);color:white;display:grid;place-items:center;font:600 14px 'Kanit';letter-spacing:0;box-shadow:5px 5px 0 var(--pink)}
@@ -64,60 +64,60 @@ button,input,textarea,select{font:inherit}
 .main-nav a.active{font-weight:600}
 .main-nav .nav-admin{padding:9px 16px;border:1px solid var(--line);border-radius:30px;color:var(--navy)}
 .menu-toggle{display:none;border:0;background:none;font-size:24px;color:var(--navy)}
-.hero{min-height:570px;padding:85px max(9vw,30px);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:50px;background:rgba(255,255,255,0.85)}
+.hero{min-height:570px;padding:85px max(9vw,30px);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:50px;background:rgba(255,255,255,0.8)}
 .eyebrow{font:600 10px 'Kanit',sans-serif;letter-spacing:2.7px;color:#9b7990}
 .hero-lead{font:400 18px 'Kanit';color:#64718a;margin:0 0 5px}
 .hero-thai{color:#7c8798;font-size:14px}
 .hero-actions{display:flex;gap:12px;margin-top:28px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:15px;border:0;border-radius:9px;padding:12px 21px;cursor:pointer;font:500 13px 'Prompt';transition:.2s}
 .btn:hover{transform:translateY(-2px)}
-.btn-primary{background:var(--navy);color:white;box-shadow:0 8px 20px #14274720}
+.btn-primary{background:var(--navy);color:white;box-shadow:0 8px 20px rgba(216,131,160,0.2)}
 .btn-outline{background:white;border:1px solid #dfe3eb;color:var(--navy)}
 .btn-light{background:white;color:var(--navy)}
-.kind-note{font:500 12px 'Kanit';color:#d58ba4;margin-top:30px}
+.kind-note{font:500 12px 'Kanit';color:#d883a0;margin-top:30px}
 .hero-art{height:360px;position:relative;display:grid;place-items:center}
-.hero-circle{position:absolute;width:300px;height:300px;border-radius:50%;background:#f9dce5;box-shadow:inset -20px -20px 0 #f5c7d5}
-.hero-card{position:absolute;width:190px;height:130px;border-radius:18px;background:#fff;box-shadow:var(--shadow);padding:23px;display:flex;flex-direction:column;justify-content:center}
-.hero-card span{font-size:25px;color:#e99bb3}
+.hero-circle{position:absolute;width:300px;height:300px;border-radius:50%;background:#ffe5ec;box-shadow:inset -20px -20px 0 #ffc2d1}
+.hero-card{position:absolute;width:190px;height:130px;border-radius:18px;background:rgba(255,255,255,0.95);box-shadow:var(--shadow);padding:23px;display:flex;flex-direction:column;justify-content:center}
+.hero-card span{font-size:25px;color:#ff85a2}
 .hero-card b{font:600 25px 'Kanit';color:var(--navy);letter-spacing:2px}
 .hero-card small{font-size:10px;color:#9aa2b0}
 .hero-card-one{top:35px;left:4% ;transform:rotate(-8deg)}
 .hero-card-two{bottom:32px;right:2%;transform:rotate(7deg)}
 .hero-sticker{position:absolute;display:grid;place-content:center;text-align:center;width:92px;height:92px;border-radius:50%;background:var(--navy);color:white;border:6px solid white;font:600 23px 'Kanit';transform:rotate(-12deg);box-shadow:var(--shadow)}
 .hero-sticker small{font:500 8px 'Prompt';letter-spacing:2px}
-.quote-strip{margin:0 auto;max-width:1000px;padding:25px 45px;display:flex;align-items:center;gap:20px;background:rgba(248,249,252,0.9);border-radius:14px;transform:translateY(-22px)}
-.quote-icon{font:70px Georgia;color:#e8a1b7;line-height:.8}
+.quote-strip{margin:0 auto;max-width:1000px;padding:25px 45px;display:flex;align-items:center;gap:20px;background:rgba(255,255,255,0.85);border-radius:14px;transform:translateY(-22px)}
+.quote-icon{font:70px Georgia;color:#ffb7c5;line-height:.8}
 .quote-strip p{margin:0;color:var(--navy);font:500 17px 'Kanit'}
 .quote-strip small{color:#8a93a3;font-size:12px}
 .section{padding:65px max(9vw,30px)}
 .section-heading{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:28px}
 .section-heading>p{max-width:420px;color:#7d8798;font-size:13px;margin:0 0 9px}
 .about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
-.info-card{padding:27px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,0.9);transition:.2s}
+.info-card{padding:27px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,0.85);transition:.2s}
 .info-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.info-icon{display:grid;place-items:center;width:42px;height:42px;background:var(--pale);border-radius:12px;color:#d88da7;font-size:21px}
+.info-icon{display:grid;place-items:center;width:42px;height:42px;background:var(--pale);border-radius:12px;color:#d883a0;font-size:21px}
 .info-card h3{font:500 19px 'Kanit';margin:15px 0 5px}
 .info-card p{font-size:12px;color:#8790a0;margin:0}
-.products-section{background:rgba(251,252,254,0.85)}
-.text-link{font-size:12px;color:var(--blue);font-weight:500}
+.products-section{background:rgba(255,255,255,0.6)}
+.text-link{font-size:12px;color:#3a86ff;font-weight:500}
 .product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .product-card{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:rgba(255,255,255,0.95);transition:.2s}
 .product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .product-image{width:100%;height:210px;object-fit:cover;display:block;background:#f6f3f5}
 .product-card-body{padding:16px}
 .product-card h3{font:500 17px 'Kanit';margin:0 0 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.product-price{font:600 20px 'Kanit';color:#d985a1}
+.product-price{font:600 20px 'Kanit';color:#d883a0}
 .product-meta{display:flex;justify-content:space-between;align-items:center;color:#929aaa;font-size:10px;margin-top:10px}
-.status-pill{font-size:10px;padding:4px 9px;border-radius:20px;background:#f3f5f9;color:#738097}
+.status-pill{font-size:10px;padding:4px 9px;border-radius:20px;background:#fff3b0;color:#856404}
 .sell-banner{margin:40px max(9vw,30px) 80px;padding:42px 55px;background:var(--navy);border-radius:18px;color:white;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden}
-.sell-banner .eyebrow{color:#e7a8bc}
+.sell-banner .eyebrow{color:#ffe5ec}
 .sell-banner h2{font:600 37px/1.1 'Kanit';margin:12px 0}
-.sell-banner p{color:#c6d0df;font-size:12px}
+.sell-banner p{color:#fde2e4;font-size:12px}
 .banner-orbit{position:absolute;right:25%;top:-60px;width:230px;height:230px;border:1px solid #ffffff20;border-radius:50%;display:grid;place-items:center;font:600 55px 'Kanit';color:#ffffff12}
-.site-footer{padding:35px max(5vw,24px);border-top:1px solid var(--line);background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:space-between;gap:25px;color:#8b94a3;font-size:11px}
+.site-footer{padding:35px max(5vw,24px);border-top:1px solid var(--line);background:rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:space-between;gap:25px;color:#8b94a3;font-size:11px}
 .site-footer b{color:var(--navy);font:500 14px 'Kanit'}
 .site-footer p{margin:4px 0}
-.site-footer a:not(.brand){color:var(--blue)}
+.site-footer a:not(.brand){color:#3a86ff}
 .footer-right{text-align:right}
 .footer-right small{color:#a2a9b5}
 .page-main{min-height:65vh;padding:65px max(9vw,30px) 85px}
@@ -125,7 +125,7 @@ button,input,textarea,select{font:inherit}
 .page-heading p{color:#828c9d;font-size:13px}
 .search-panel{display:flex;gap:12px;max-width:850px;margin:0 auto 22px}
 .search-box{height:50px;display:flex;align-items:center;gap:12px;flex:1;border:1px solid var(--line);border-radius:9px;padding:0 17px;background:white}
-.search-box span{font-size:25px;color:#9a7890}
+.search-box span{font-size:25px;color:#d883a0}
 .search-box input{border:0;outline:0;width:100%;font-size:13px}
 .search-panel select{border:1px solid var(--line);border-radius:9px;padding:0 13px;color:#69758a;background:white;font-size:12px}
 .results-line{max-width:850px;margin:0 auto 17px;display:flex;justify-content:space-between;color:#9099a8;font-size:12px}
@@ -134,16 +134,16 @@ button,input,textarea,select{font:inherit}
 .detail-wrap{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:start}
 .detail-image{width:100%;max-height:500px;object-fit:cover;border-radius:17px;background:#f7f2f4}
 .detail-info{padding:15px 0}
-.detail-price{font:600 30px 'Kanit';color:#d985a1}
+.detail-price{font:600 30px 'Kanit';color:#d883a0}
 .detail-description{color:#7b8595;white-space:pre-wrap;font-size:13px;border-top:1px solid var(--line);padding-top:20px;margin-top:20px}
-.detail-contact{margin-top:25px;padding:18px;background:rgba(250,247,249,0.9);border-radius:12px;font-size:13px}
+.detail-contact{margin-top:25px;padding:18px;background:rgba(255,255,255,0.85);border-radius:12px;font-size:13px}
 .seller-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(220px,1fr);gap:25px;max-width:1000px;margin:auto;align-items:start}
-.form-card{padding:30px;background:rgba(255,255,255,0.95);border:1px solid var(--line);border-radius:15px;box-shadow:0 10px 35px #2435520a}
+.form-card{padding:30px;background:rgba(255,255,255,0.95);border:1px solid var(--line);border-radius:15px;box-shadow:0 10px 35px rgba(216,131,160,0.08)}
 .form-hint{font-size:12px;color:#929aaa;margin:3px 0 22px}
 .form-card label{display:block;font-size:12px;color:#536078;margin:15px 0}
-.form-card label>span{color:#d77f9b}
+.form-card label>span{color:#d883a0}
 .form-card input:not([type=file]),.form-card textarea{display:block;width:100%;margin-top:7px;border:1px solid #e5e8ee;border-radius:8px;padding:11px 12px;outline:none;font-size:12px;color:var(--ink);background:#fff}
-.form-card input:focus,.form-card textarea:focus{border-color:#d99ab0}
+.form-card input:focus,.form-card textarea:focus{border-color:#ffb7c5}
 .form-card input[type=file]{display:block;margin-top:8px;font-size:11px;max-width:100%}
 .form-card textarea{resize:vertical}
 .field-note,.privacy-note{font-size:10px;color:#9aa2af}
@@ -151,7 +151,7 @@ button,input,textarea,select{font:inherit}
 .image-preview img{width:100%;height:100%;object-fit:contain}
 .form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 .privacy-note{line-height:1.6;margin-top:18px}
-.aside-card{background:rgba(255,246,248,0.9);padding:25px;border-radius:14px}
+.aside-card{background:rgba(255,240,245,0.9);padding:25px;border-radius:14px}
 .aside-card ul{padding-left:18px;color:#7f8998;font-size:11px}
 .aside-card li{margin:9px 0}
 .seller-list-section{padding-left:0;padding-right:0}
@@ -170,22 +170,22 @@ button,input,textarea,select{font:inherit}
 .admin-status{margin:0 16px 12px}
 
 @media(max-width:800px){.main-nav{gap:15px}.hero{padding:65px 7vw;gap:20px}.hero-art{transform:scale(.85)}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.section{padding:55px 7vw}.page-main{padding:55px 7vw}.site-footer{flex-wrap:wrap}.detail-wrap{gap:25px}}
-@media(max-width:620px){.site-header{height:72px}.menu-toggle{display:block}.main-nav{display:none;position:absolute;top:71px;left:0;right:0;background:white;padding:18px 25px 24px;box-shadow:0 15px 25px #182a4615;flex-direction:column;align-items:flex-start;gap:15px}.main-nav.open{display:flex}.hero{display:block;padding:60px 8vw 35px;background:rgba(255,255,255,0.85)}.hero h1{font-size:61px}.hero-art{height:270px;margin-top:15px;transform:scale(.82)}.hero-circle{width:230px;height:230px}.hero-card{width:160px;height:112px;padding:17px}.hero-card-one{left:0}.hero-card-two{right:0}.quote-strip{margin:0 18px;padding:18px;transform:translateY(0)}.quote-strip p{font-size:13px}.quote-strip small{font-size:10px}.section{padding:48px 7vw}.section-heading{align-items:flex-start;flex-direction:column;gap:8px}.about-grid{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr 1fr;gap:11px}.product-image{height:145px}.product-card-body{padding:11px}.product-card h3{font-size:14px}.product-price{font-size:17px}.product-meta{font-size:9px}.sell-banner{margin:25px 18px 55px;padding:30px 25px;gap:15px}.sell-banner h2{font-size:29px}.sell-banner .btn{white-space:nowrap;padding:10px 13px}.banner-orbit{right:15%;opacity:.5}.site-footer{padding:30px 7vw;display:grid;grid-template-columns:1fr 1fr}.footer-right{text-align:left;grid-column:1/-1}.page-main{padding:45px 6vw 65px}.search-panel{flex-direction:column}.search-panel select{height:45px}.detail-wrap,.seller-layout{grid-template-columns:1fr}.form-card{padding:22px}.seller-aside{order:-1}.admin-toolbar{align-items:flex-start;gap:12px}.admin-toolbar .btn{white-space:nowrap}.admin-card-actions{flex-wrap:wrap}}
+@media(max-width:620px){.site-header{height:72px}.menu-toggle{display:block}.main-nav{display:none;position:absolute;top:71px;left:0;right:0;background:white;padding:18px 25px 24px;box-shadow:0 15px 25px rgba(0,0,0,0.05);flex-direction:column;align-items:flex-start;gap:15px}.main-nav.open{display:flex}.hero{display:block;padding:60px 8vw 35px;background:rgba(255,255,255,0.85)}.hero h1{font-size:61px}.hero-art{height:270px;margin-top:15px;transform:scale(.82)}.hero-circle{width:230px;height:230px}.hero-card{width:160px;height:112px;padding:17px}.hero-card-one{left:0}.hero-card-two{right:0}.quote-strip{margin:0 18px;padding:18px;transform:translateY(0)}.quote-strip p{font-size:13px}.quote-strip small{font-size:10px}.section{padding:48px 7vw}.section-heading{align-items:flex-start;flex-direction:column;gap:8px}.about-grid{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr 1fr;gap:11px}.product-image{height:145px}.product-card-body{padding:11px}.product-card h3{font-size:14px}.product-price{font-size:17px}.product-meta{font-size:9px}.sell-banner{margin:25px 18px 55px;padding:30px 25px;gap:15px}.sell-banner h2{font-size:29px}.sell-banner .btn{white-space:nowrap;padding:10px 13px}.banner-orbit{right:15%;opacity:.5}.site-footer{padding:30px 7vw;display:grid;grid-template-columns:1fr 1fr}.footer-right{text-align:left;grid-column:1/-1}.page-main{padding:45px 6vw 65px}.page-heading h1{font-size:43px}.search-panel{flex-direction:column}.search-panel select{height:45px}.detail-wrap,.seller-layout{grid-template-columns:1fr}.form-card{padding:22px}.seller-aside{order:-1}.admin-toolbar{align-items:flex-start;gap:12px}.admin-toolbar .btn{white-space:nowrap}.admin-card-actions{flex-wrap:wrap}}
 
 .nav, .hero, .card, .admin-box, footer, table, input, select, textarea, button {
   border-radius: 16px !important;
 }
 
 .btn-primary, button[type="submit"] {
-  background-color: #ff85a2 !important;
+  background-color: #d883a0 !important;
   color: white !important;
   border: none !important;
-  box-shadow: 0 4px 12px rgba(255, 133, 162, 0.4) !important;
+  box-shadow: 0 4px 12px rgba(216, 131, 160, 0.3) !important;
   transition: all 0.3s ease !important;
 }
 
 .btn-primary:hover, button[type="submit"]:hover {
-  background-color: #d45d79 !important;
+  background-color: #b56580 !important;
   transform: translateY(-2px) scale(1.02);
 }
 
@@ -204,12 +204,12 @@ button,input,textarea,select{font:inherit}
   gap: 8px;
   font-family: 'Kanit', sans-serif;
   font-size: 13px;
-  color: #d81b60;
+  color: #d883a0;
   backdrop-filter: blur(5px);
 }
 
 #emoji-toggle-btn {
-  background: #ff85a2;
+  background: #d883a0;
   color: white;
   border: none;
   border-radius: 99px;
@@ -222,7 +222,7 @@ button,input,textarea,select{font:inherit}
 }
 
 #emoji-toggle-btn:hover {
-  background: #d45d79;
+  background: #b56580;
   transform: scale(1.05);
 }
 
@@ -242,7 +242,7 @@ button,input,textarea,select{font:inherit}
 
 .star-sparkle {
   position: absolute;
-  color: #ffcc00;
+  color: #ffd670;
   font-size: 14px;
   animation: sparklePulse 1.5s infinite alternate;
   pointer-events: none;
