@@ -69,7 +69,7 @@ button,input,textarea,select{font:inherit}
 
 /* --- ขยายขนาดคำว่า Let's buy it or sell ให้ใหญ่และชัดเจน --- */
 .hero-lead{
-  font: 600 28px/1.3 'Kanit', sans-serif !important;
+  font: 600 25px/1.3 'Kanit', sans-serif !important;
   color: #5c4952 !important;
   margin: 8px 0 12px !important;
   letter-spacing: 0.5px;

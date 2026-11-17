@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleContainer = document.createElement("div");
   toggleContainer.id = "emoji-toggle-container";
   toggleContainer.innerHTML = `
-    <span>✨ เอฟเฟกต์น่ารักๆ</span>
+    <span>✨ เอฟเฟกต์</span>
     <button id="emoji-toggle-btn" type="button">${isEmojiActive ? "ปิดเอฟเฟกต์" : "เปิดเอฟเฟกต์"}</button>
   `;
   document.body.appendChild(toggleContainer);
