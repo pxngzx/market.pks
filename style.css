@@ -1,0 +1,359 @@
+:root {
+  --navy: #d883a0;
+  --blue: #70c1ff;
+  --pink: #ff9ebb;
+  --yellow: #ffd966;
+  --pale: #fff0f5;
+  --ink: #4a3b42;
+  --muted: #7a6670;
+  --line: #ffd1dc;
+  --white: #fff;
+  --shadow: 0 10px 30px rgba(255, 183, 197, 0.35);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+/* --- พื้นหลังพาสเทล (ชมพู เหลือง ฟ้า) + ลายตารางสีขาว + สีไหลวนนุ่มๆ --- */
+body, body.login-body {
+  position: relative !important;
+  margin: 0 !important;
+  min-height: 100vh !important;
+  
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.65) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.65) 1px, transparent 1px),
+    linear-gradient(135deg, #ffc2d1, #fff3b0, #bde0fe, #ffccd5) !important;
+  
+  background-size: 30px 30px, 30px 30px, 400% 400% !important;
+  background-position: 0 0, 0 0, 0% 50% !important;
+  animation: pastel-flow 16s ease infinite !important;
+  
+  color: var(--ink) !important;
+  font-family: 'Prompt', sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  overflow-x: hidden !important;
+}
+
+@keyframes pastel-flow {
+  0% { background-position: 0 0, 0 0, 0% 50%; }
+  50% { background-position: 0 0, 0 0, 100% 50%; }
+  100% { background-position: 0 0, 0 0, 0% 50%; }
+}
+
+/* --- ตัวหนังสือไล่สีชมพู-เหลือง-ฟ้าพาสเทล แบบอ่านง่าย ไม่กลืนพื้นหลัง --- */
+h1, h2, h3, .brand span:not(.brand-mark), .hero h1, .page-heading h1, .section-heading h2 {
+  background: linear-gradient(135deg, #e05688, #e69d24, #3b9ae1) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  filter: drop-shadow(0px 2px 3px rgba(255, 255, 255, 0.9)) !important;
+}
+
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit}
+.site-header{height:86px;padding:0 max(5vw,24px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #f0f1f4;background:rgba(255,255,255,0.88);position:sticky;top:0;z-index:20;backdrop-filter:blur(14px)}
+.brand{display:flex;align-items:center;gap:11px;color:var(--navy);font:600 14px 'Kanit',sans-serif;letter-spacing:1.5px;line-height:1.1}
+.brand small{display:block;color:var(--blue);font:500 9px 'Prompt',sans-serif;letter-spacing:3px;margin-top:5px}
+.brand-mark{width:43px;height:43px;border-radius:14px;background:linear-gradient(135deg, #ff8fab, #ffd166, #70d6ff);color:white;display:grid;place-items:center;font:600 14px 'Kanit';letter-spacing:0;box-shadow:4px 4px 0 rgba(255, 183, 197, 0.5);text-shadow:0 1px 2px rgba(0,0,0,0.15)}
+.main-nav{display:flex;align-items:center;gap:30px;font-size:13px;color:#5c5463;font-weight:500}
+.main-nav a{transition:.2s}
+.main-nav a:hover,.main-nav a.active{color:#d85a88}
+.main-nav a.active{font-weight:600}
+.main-nav .nav-admin{padding:9px 16px;border:1px solid var(--line);border-radius:30px;color:#d85a88;background:rgba(255,255,255,0.8)}
+.menu-toggle{display:none;border:0;background:none;font-size:24px;color:var(--navy)}
+
+.hero{min-height:570px;padding:85px max(9vw,30px);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:50px;background:rgba(255,255,255,0.85)}
+.eyebrow{font:600 11px 'Kanit',sans-serif;letter-spacing:2.7px;color:#b85d82}
+
+/* --- ขยายขนาดคำว่า Let's buy it or sell ให้ใหญ่และชัดเจน --- */
+.hero-lead{
+  font: 600 28px/1.3 'Kanit', sans-serif !important;
+  color: #5c4952 !important;
+  margin: 8px 0 12px !important;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.9);
+}
+
+.hero-thai{color:#695d68;font-size:15px}
+.hero-actions{display:flex;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:15px;border:0;border-radius:14px;padding:12px 22px;cursor:pointer;font:500 14px 'Prompt';transition:.2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:linear-gradient(135deg, #ff85a1, #ffbe55, #6ec6ff);color:white;box-shadow:0 8px 20px rgba(255, 133, 161, 0.3);text-shadow:0 1px 2px rgba(0,0,0,0.12)}
+.btn-outline{background:white;border:1.5px solid #ffd1dc;color:#c95982}
+.btn-light{background:white;color:#c95982;box-shadow:0 6px 18px rgba(216, 131, 160, 0.2);font-weight:600}
+.kind-note{font:500 13px 'Kanit';color:#c95982;margin-top:30px}
+
+.hero-art{height:360px;position:relative;display:grid;place-items:center}
+.hero-circle{position:absolute;width:300px;height:300px;border-radius:50%;background:linear-gradient(135deg, #ffe5ec, #fff3b0, #caf0f8);box-shadow:inset -15px -15px 0 rgba(255, 255, 255, 0.6)}
+.hero-card{position:absolute;width:190px;height:130px;border-radius:18px;background:rgba(255,255,255,0.96);box-shadow:var(--shadow);padding:23px;display:flex;flex-direction:column;justify-content:center;border:1px solid #fff0f5}
+.hero-card span{font-size:25px;color:#ff85a2}
+.hero-card b{font:600 25px 'Kanit';color:#c95982;letter-spacing:2px}
+.hero-card small{font-size:10px;color:#827685}
+.hero-card-one{top:35px;left:4%;transform:rotate(-8deg)}
+.hero-card-two{bottom:32px;right:2%;transform:rotate(7deg)}
+.hero-sticker{position:absolute;display:grid;place-content:center;text-align:center;width:92px;height:92px;border-radius:50%;background:linear-gradient(135deg, #ff8fab, #ffd166, #70d6ff);color:white;border:5px solid white;font:600 23px 'Kanit';transform:rotate(-12deg);box-shadow:var(--shadow);text-shadow:0 1px 2px rgba(0,0,0,0.15)}
+.hero-sticker small{font:500 8px 'Prompt';letter-spacing:2px}
+
+.quote-strip{margin:0 auto;max-width:1000px;padding:25px 45px;display:flex;align-items:center;gap:20px;background:rgba(255,255,255,0.92);border:1px solid #ffe5ec;border-radius:18px;transform:translateY(-22px);box-shadow:var(--shadow)}
+.quote-icon{font:70px Georgia;color:#ffb7c5;line-height:.8}
+.quote-strip p{margin:0;color:#b84d76;font:500 17px 'Kanit'}
+.quote-strip small{color:#756a78;font-size:12px}
+
+.section{padding:65px max(9vw,30px)}
+.section-heading{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:28px}
+.section-heading>p{max-width:420px;color:#695e6c;font-size:13px;margin:0 0 9px}
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.info-card{padding:27px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,0.92);transition:.2s}
+.info-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.info-icon{display:grid;place-items:center;width:44px;height:44px;background:linear-gradient(135deg, #ffe5ec, #fff3b0, #e0fbfc);border-radius:12px;color:#c95982;font-size:21px}
+.info-card h3{font:500 19px 'Kanit';margin:15px 0 5px}
+.info-card p{font-size:13px;color:#6e6370;margin:0}
+
+.products-section{background:rgba(255,255,255,0.65)}
+.text-link{font-size:13px;color:#3a86ff;font-weight:500}
+.product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.product-card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:rgba(255,255,255,0.96);transition:.2s}
+.product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.product-image{width:100%;height:210px;object-fit:cover;display:block;background:#f6f3f5}
+.product-card-body{padding:16px}
+.product-card h3{font:500 17px 'Kanit';margin:0 0 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.product-price{font:600 20px 'Kanit';color:#c95982}
+.product-meta{display:flex;justify-content:space-between;align-items:center;color:#7d7280;font-size:11px;margin-top:10px}
+.status-pill{font-size:10px;padding:4px 10px;border-radius:20px;background:#fff3b0;color:#7a5c00;font-weight:500}
+
+/* --- ปรับพื้นหลังของ Have something to share ให้เป็นพาสเทลสีอ่อน อ่านง่ายชัดเจน --- */
+.sell-banner {
+  margin: 40px max(9vw,30px) 80px;
+  padding: 45px 55px;
+  background: linear-gradient(135deg, rgba(255, 232, 240, 0.96), rgba(255, 250, 224, 0.96), rgba(226, 244, 255, 0.96)) !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: 0 15px 35px rgba(216, 131, 160, 0.2) !important;
+  border-radius: 22px;
+  color: var(--ink) !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+.sell-banner .eyebrow {
+  color: #b8527a !important;
+  font-weight: 600;
+}
+.sell-banner h2 {
+  font: 600 38px/1.15 'Kanit', sans-serif !important;
+  margin: 10px 0 !important;
+}
+.sell-banner p {
+  color: #5c4e55 !important;
+  font-size: 14px !important;
+  font-weight: 400;
+}
+.banner-orbit {
+  position: absolute;
+  right: 25%;
+  top: -60px;
+  width: 230px;
+  height: 230px;
+  border: 2px dashed rgba(255, 183, 197, 0.45);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font: 600 55px 'Kanit';
+  color: rgba(216, 131, 160, 0.12);
+  pointer-events: none;
+}
+
+.site-footer{padding:35px max(5vw,24px);border-top:1px solid var(--line);background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:space-between;gap:25px;color:#736875;font-size:12px}
+.site-footer b{color:#c95982;font:500 14px 'Kanit'}
+.site-footer p{margin:4px 0}
+.site-footer a:not(.brand){color:#3a86ff}
+.footer-right{text-align:right}
+.footer-right small{color:#8e8391}
+.page-main{min-height:65vh;padding:65px max(9vw,30px) 85px}
+.page-heading{text-align:center;margin:10px 0 38px}
+.page-heading p{color:#695e6c;font-size:14px}
+.search-panel{display:flex;gap:12px;max-width:850px;margin:0 auto 22px}
+.search-box{height:50px;display:flex;align-items:center;gap:12px;flex:1;border:1px solid var(--line);border-radius:14px;padding:0 17px;background:white}
+.search-box span{font-size:25px;color:#d883a0}
+.search-box input{border:0;outline:0;width:100%;font-size:13px}
+.search-panel select{border:1px solid var(--line);border-radius:14px;padding:0 13px;color:#5c5463;background:white;font-size:12px}
+.results-line{max-width:850px;margin:0 auto 17px;display:flex;justify-content:space-between;color:#7a6f7d;font-size:12px}
+.narrow-main{max-width:1120px;margin:auto}
+.back-link{display:inline-block;color:#695e6c;font-size:13px;margin-bottom:25px}
+.detail-wrap{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:start}
+.detail-image{width:100%;max-height:500px;object-fit:cover;border-radius:17px;background:#f7f2f4}
+.detail-info{padding:15px 0}
+.detail-price{font:600 30px 'Kanit';color:#c95982}
+.detail-description{color:#665b69;white-space:pre-wrap;font-size:14px;border-top:1px solid var(--line);padding-top:20px;margin-top:20px}
+.detail-contact{margin-top:25px;padding:18px;background:rgba(255,255,255,0.92);border-radius:14px;font-size:13px}
+.seller-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(220px,1fr);gap:25px;max-width:1000px;margin:auto;align-items:start}
+.form-card{padding:30px;background:rgba(255,255,255,0.96);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 35px rgba(216,131,160,0.1)}
+.form-hint{font-size:12px;color:#7d7280;margin:3px 0 22px}
+.form-card label{display:block;font-size:13px;color:#4a3b42;margin:15px 0;font-weight:500}
+.form-card label>span{color:#d85a88}
+.form-card input:not([type=file]),.form-card textarea{display:block;width:100%;margin-top:7px;border:1px solid #e5e8ee;border-radius:12px;padding:11px 12px;outline:none;font-size:13px;color:var(--ink);background:#fff}
+.form-card input:focus,.form-card textarea:focus{border-color:#ff9ebb}
+.form-card input[type=file]{display:block;margin-top:8px;font-size:12px;max-width:100%}
+.form-card textarea{resize:vertical}
+.field-note,.privacy-note{font-size:11px;color:#857987}
+.image-preview{height:170px;border:1.5px dashed #ffb7c5;border-radius:14px;display:grid;place-items:center;color:#8c7f8e;font-size:12px;overflow:hidden;background:#fff9fb}
+.image-preview img{width:100%;height:100%;object-fit:contain}
+.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.privacy-note{line-height:1.6;margin-top:18px}
+.aside-card{background:rgba(255,245,248,0.95);border:1px solid #ffd1dc;padding:25px;border-radius:16px}
+.aside-card ul{padding-left:18px;color:#695e6c;font-size:12px}
+.aside-card li{margin:9px 0}
+.seller-list-section{padding-left:0;padding-right:0}
+.hidden{display:none!important}
+.empty-state{grid-column:1/-1;padding:45px 20px;text-align:center;border:1.5px dashed #ffd1dc;border-radius:16px;color:#7d7280;font-size:13px;background:rgba(255,255,255,0.8)}
+.admin-login{max-width:430px;margin:0 auto}
+.admin-login .btn{width:100%;margin-top:8px}
+.form-message{font-size:12px;color:#c45c79}
+.admin-toolbar{display:flex;justify-content:space-between;align-items:center;margin:25px 0}
+.admin-warning{max-width:850px;margin:40px auto 0;padding:13px 16px;background:#fff9ed;border-radius:12px;color:#856404}
+.admin-approved-heading{margin-top:55px}
+.admin-card-actions{display:flex;gap:8px;padding:0 16px 16px}
+.admin-card-actions button{flex:1;font-size:12px;padding:9px}
+.btn-success{background:#e8f5ee;color:#347a54}
+.btn-danger{background:#fff0f2;color:#b74d66}
+.admin-status{margin:0 16px 12px}
+
+@media(max-width:800px){
+  .main-nav{gap:15px}
+  .hero{padding:65px 7vw;gap:20px}
+  .hero-art{transform:scale(.85)}
+  .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .section{padding:55px 7vw}
+  .page-main{padding:55px 7vw}
+  .site-footer{flex-wrap:wrap}
+  .detail-wrap{gap:25px}
+}
+
+@media(max-width:620px){
+  .site-header{height:72px}
+  .menu-toggle{display:block}
+  .main-nav{display:none;position:absolute;top:71px;left:0;right:0;background:white;padding:18px 25px 24px;box-shadow:0 15px 25px rgba(0,0,0,0.05);flex-direction:column;align-items:flex-start;gap:15px}
+  .main-nav.open{display:flex}
+  .hero{display:block;padding:60px 8vw 35px;background:rgba(255,255,255,0.88)}
+  .hero h1{font-size:56px}
+  .hero-lead{font-size:22px !important}
+  .hero-art{height:270px;margin-top:15px;transform:scale(.82)}
+  .hero-circle{width:230px;height:230px}
+  .hero-card{width:160px;height:112px;padding:17px}
+  .hero-card-one{left:0}
+  .hero-card-two{right:0}
+  .quote-strip{margin:0 18px;padding:18px;transform:translateY(0)}
+  .quote-strip p{font-size:14px}
+  .quote-strip small{font-size:11px}
+  .section{padding:48px 7vw}
+  .section-heading{align-items:flex-start;flex-direction:column;gap:8px}
+  .about-grid{grid-template-columns:1fr}
+  .product-grid{grid-template-columns:1fr 1fr;gap:11px}
+  .product-image{height:145px}
+  .product-card-body{padding:11px}
+  .product-card h3{font-size:14px}
+  .product-price{font-size:17px}
+  .product-meta{font-size:10px}
+  .sell-banner{margin:25px 18px 55px;padding:30px 25px;gap:15px;flex-direction:column;align-items:flex-start}
+  .sell-banner h2{font-size:29px !important}
+  .sell-banner .btn{white-space:nowrap;padding:10px 16px}
+  .banner-orbit{right:10%;opacity:.5}
+  .site-footer{padding:30px 7vw;display:grid;grid-template-columns:1fr 1fr}
+  .footer-right{text-align:left;grid-column:1/-1}
+  .page-main{padding:45px 6vw 65px}
+  .page-heading h1{font-size:43px}
+  .search-panel{flex-direction:column}
+  .search-panel select{height:45px}
+  .detail-wrap,.seller-layout{grid-template-columns:1fr}
+  .form-card{padding:22px}
+  .seller-aside{order:-1}
+  .admin-toolbar{align-items:flex-start;gap:12px}
+  .admin-toolbar .btn{white-space:nowrap}
+  .admin-card-actions{flex-wrap:wrap}
+}
+
+.nav, .hero, .card, .admin-box, footer, table, input, select, textarea, button {
+  border-radius: 16px !important;
+}
+
+.btn-primary, button[type="submit"] {
+  background: linear-gradient(135deg, #ff85a1, #ffbe55, #6ec6ff) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(255, 133, 161, 0.35) !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.15) !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn-primary:hover, button[type="submit"]:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(110, 198, 255, 0.4) !important;
+}
+
+#emoji-toggle-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10000;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 8px 14px;
+  border-radius: 99px;
+  box-shadow: 0 4px 15px rgba(238, 130, 238, 0.3);
+  border: 2px solid #ffb7c5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Kanit', sans-serif;
+  font-size: 13px;
+  color: #c95982;
+  backdrop-filter: blur(5px);
+}
+
+#emoji-toggle-btn {
+  background: linear-gradient(135deg, #ff85a1, #ffd166, #70d6ff);
+  color: white;
+  border: none;
+  border-radius: 99px;
+  padding: 4px 12px;
+  cursor: pointer;
+  font-family: 'Kanit', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+#emoji-toggle-btn:hover {
+  transform: scale(1.05);
+}
+
+.whimsical-petal {
+  position: fixed;
+  top: -10%;
+  z-index: 9999;
+  user-select: none;
+  pointer-events: none;
+  animation: whimsicalFall linear infinite;
+}
+
+@keyframes whimsicalFall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(105vh) rotate(360deg); opacity: 0.2; }
+}
+
+.star-sparkle {
+  position: absolute;
+  color: #ffd670;
+  font-size: 14px;
+  animation: sparklePulse 1.5s infinite alternate;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes sparklePulse {
+  0% { transform: scale(0.7); opacity: 0.4; }
+  100% { transform: scale(1.2); opacity: 1; }
+}
